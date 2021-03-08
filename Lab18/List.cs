@@ -9,6 +9,7 @@ namespace Lab18
         private int _count = 0;
         private readonly string[] _array;
 
+
         public List(int maxLength)
         {
             _array = new string[maxLength];
@@ -41,16 +42,21 @@ namespace Lab18
         }
         public bool RemoveAt(int index)
         {
-            for (int i = index; i < _count; i++)
-            {
-                _array[i] = _array[i + 1];
-            }
             if (index > _count)
             {
                 return false;
             }
             else
             {
+                for (int i = index; i < _count; i++)
+                {
+                    _array[i] = _array[i + 1];
+                }
+                foreach (var item in _array)
+                {
+                    Console.WriteLine(item);
+                }
+                _count--;
                 return true;
             }
         }
@@ -61,20 +67,25 @@ namespace Lab18
             {
                 Console.WriteLine(_array[i]);
             }
+            Console.WriteLine("++++++++++");
+
         }
 
         public bool InsertAt(int index, Object o)
         {
-            for (int i = index; i < _count; i++)
-            {
-                _array[i] = _array[i - 1];
-            }
+            var value = o.ToString();
             if (index > _count)
             {
                 return false;
             }
             else
             {
+                _array[index] = value;
+                _count++;
+                foreach (var item in _array)
+                {
+                    Console.WriteLine(item);
+                }
                 return true;
             }
         }
